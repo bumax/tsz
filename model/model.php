@@ -245,14 +245,14 @@ public function feedback($text){
 
 $headers = "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=utf-8\r\n";
-$headers .= "From: info@sysoeva12.ru \r\n";
+$headers .= "From: info@host \r\n";
 if($text == '')
 return "<font color=\"red\">Введите текст!</font>";
 $text = $text."\n----------\nОтправлено от: ".$_SESSION['user_data']['Name']." (кв.".$_SESSION['user_data']['room'].")\n".(isset($_SESSION['user_data']['email']) ? "Email: ".$_SESSION['user_data']['email'] : "")."\n".(isset($_SESSION['user_data']['phone']) ? "Телефон: ".$_SESSION['user_data']['phone'] : "")."\nIP адрес: ".getenv("REMOTE_ADDR");
 
-mail("main@sysoeva12.ru", "Обращение от ".$_SESSION['user_data']['Name']." (кв.".$_SESSION['user_data']['room'].")", $text, $headers);
+mail("main@host", "Обращение от ".$_SESSION['user_data']['Name']." (кв.".$_SESSION['user_data']['room'].")", $text, $headers);
 
-if (mail("info@sysoeva12.ru", "Обращение от ".$_SESSION['user_data']['Name']." (кв.".$_SESSION['user_data']['room'].")", $text, $headers))
+if (mail("info@host", "Обращение от ".$_SESSION['user_data']['Name']." (кв.".$_SESSION['user_data']['room'].")", $text, $headers))
 return "<font color=\"green\">Сообщение успешно отправлено!</font>";
 else echo "<font color=\"red\">Сбой работы почтового сервера! Попробуйте позже.</font>";
 
